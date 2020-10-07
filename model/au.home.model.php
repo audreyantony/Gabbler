@@ -11,6 +11,13 @@ function au_signInSelect($nickname, $db){
     return  mysqli_query($db, $au_query);
 }
 
+// SIGN IN ROLE RETRIEVING QUERY
+function au_userRoleId($userId, $db){
+    $au_query = "SELECT role_has_user_id_role FROM role_has_user WHERE role_has_user_id_user =". $userId .";";
+    $au_result = mysqli_query($db, $au_query);
+    return intval(mysqli_fetch_assoc($au_result)['role_has_user_id_role']);
+}
+
 // SIGN UP SELECT QUERY FOR CHECK UP
 function au_signUpSelect($nickname,$email, $db){
     $au_query = 'SELECT * FROM user WHERE nickname_user = "'.$nickname.'" OR mail_user = "'.$email.'";';

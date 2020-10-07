@@ -42,6 +42,7 @@ if (isset($_POST['sign_in'])){
                 // FILL THE SESSION WITH USER INFORMATION
                 $_SESSION['session_id'] = session_id();
                 $_SESSION['user'] = $au_resultInArray;
+                $_SESSION['role'] = au_userRoleId($au_resultInArray['id_user'],$db);
 
                 // REDIRECTION
                 header('Location: ?p=room.user');
